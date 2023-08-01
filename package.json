@@ -1,7 +1,7 @@
 {
-    "name": "evation",
+    "name": "orchis-electron",
     "version": "1.0.0",
-    "description": "Simulate being a judge who processes cases and makes decisions.",
+    "description": "A desktop application using Electron for demonstration purposes.",
     "main": "./out/main/index.js",
     "author": "eliziel.me",
     "homepage": "https://github.com/elizielx/evation",
@@ -14,10 +14,13 @@
         "start": "electron-vite preview",
         "dev": "electron-vite dev",
         "build": "npm run typecheck && electron-vite build",
+        "rebuild:electron": "electron-rebuild -f -w better-sqlite3",
         "postinstall": "electron-builder install-app-deps",
         "build:win": "npm run build && electron-builder --win --config",
         "build:mac": "electron-vite build && electron-builder --mac --config",
-        "build:linux": "electron-vite build && electron-builder --linux --config"
+        "build:linux": "electron-vite build && electron-builder --linux --config",
+        "generate": "drizzle-kit generate:sqlite",
+        "push": "drizzle-kit push:sqlite"
     },
     "dependencies": {
         "@electron-toolkit/preload": "^2.0.0",
@@ -27,6 +30,11 @@
     "devDependencies": {
         "@electron-toolkit/tsconfig": "^1.0.1",
         "@electron/notarize": "^1.2.3",
+        "@electron/rebuild": "^3.2.13",
+        "@tanstack/react-query": "^4.32.1",
+        "@trpc/client": "^10.36.0",
+        "@trpc/react-query": "^10.36.0",
+        "@trpc/server": "^10.36.0",
         "@types/node": "^18.16.19",
         "@types/react": "^18.2.14",
         "@types/react-dom": "^18.2.6",
@@ -35,6 +43,7 @@
         "@vitejs/plugin-react": "^4.0.3",
         "electron": "^24.6.2",
         "electron-builder": "^23.6.0",
+        "electron-trpc": "^0.5.2",
         "electron-vite": "^1.0.25",
         "eslint": "^8.44.0",
         "eslint-config-prettier": "^8.8.0",
@@ -43,7 +52,10 @@
         "prettier": "^2.8.8",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-router-dom": "^6.14.2",
+        "sass": "^1.64.2",
         "typescript": "^5.1.6",
-        "vite": "^4.4.2"
+        "vite": "^4.4.2",
+        "zod": "^3.21.4"
     }
 }

@@ -1,5 +1,5 @@
-appId: me.eliziel.evation
-productName: evation
+appId: me.eliziel.orchis
+productName: orchis
 directories:
     buildResources: build
 files:
@@ -13,7 +13,7 @@ asarUnpack:
     - resources/**
 afterSign: build/notarize.js
 win:
-    executableName: evation
+    executableName: orchis
 nsis:
     artifactName: ${name}-${version}-setup.${ext}
     shortcutName: ${productName}
