@@ -1,6 +1,8 @@
 import { app, shell, BrowserWindow } from "electron";
 import { join } from "path";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
+import { createIPCHandler } from "electron-trpc/main";
+import { router } from "./api";
 import icon from "../../resources/icon.png?asset";
 
 function createWindow(): void {
@@ -16,6 +18,8 @@ function createWindow(): void {
             sandbox: false,
         },
     });
+
+    createIPCHandler({ router, windows: [mainWindow] });
 
     mainWindow.on("ready-to-show", () => {
         mainWindow.show();
@@ -40,7 +44,7 @@ function createWindow(): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     // Set app user model id for windows
-    electronApp.setAppUserModelId("me.eliziel.evation");
+    electronApp.setAppUserModelId("me.eliziel.orchis");
 
     // Default open or close DevTools by F12 in development
     // and ignore CommandOrControl + R in production.
